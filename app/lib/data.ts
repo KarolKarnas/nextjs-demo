@@ -21,13 +21,13 @@ export async function fetchRevenue() {
 		// Don't do this in real life :)
 
 		console.log('Fetching revenue data...');
-		await new Promise((resolve) => setTimeout(resolve, 2000));
+		// await new Promise((resolve) => setTimeout(resolve, 2000));
 
 		const data = await sql<Revenue>`SELECT * FROM revenue`;
 
 		// console.log(data)
 
-		console.log('Data fetch complete after 3 seconds.');
+		// console.log('Data fetch complete after 3 seconds.');
 
 		return data.rows;
 	} catch (error) {
@@ -40,7 +40,7 @@ export async function fetchLatestInvoices() {
 	noStore();
 	try {
 		console.log('Fetching latest invoices data...');
-		await new Promise((resolve) => setTimeout(resolve, 2000));
+		// await new Promise((resolve) => setTimeout(resolve, 2000));
 		const data = await sql<LatestInvoiceRaw>`
       SELECT invoices.amount, customers.name, customers.image_url, customers.email, invoices.id
       FROM invoices
@@ -59,11 +59,16 @@ export async function fetchLatestInvoices() {
 	}
 }
 
+// new Promise((resolve) => setTimeout(resolve, 2000)).then(() => console.log('2 seconds has passed'))
+
 export async function fetchCardData() {
 	noStore();
 	try {
+await new Promise((resolve) => setTimeout(resolve, 2000))
+
 		console.log('Fetching card data...');
-		await new Promise((resolve) => setTimeout(resolve, 2000));
+		// await new Promise((resolve) => setTimeout(resolve, 2000));
+
 		// You can probably combine these into a single SQL query
 		// However, we are intentionally splitting them to demonstrate
 		// how to initialize multiple queries in parallel with JS.
