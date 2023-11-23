@@ -64,7 +64,7 @@ export async function fetchLatestInvoices() {
 export async function fetchCardData() {
 	noStore();
 	try {
-await new Promise((resolve) => setTimeout(resolve, 2000))
+		await new Promise((resolve) => setTimeout(resolve, 2000));
 
 		console.log('Fetching card data...');
 		// await new Promise((resolve) => setTimeout(resolve, 2000));
@@ -180,6 +180,7 @@ export async function fetchInvoiceById(id: string) {
 			amount: invoice.amount / 100,
 		}));
 
+		console.log(invoice[0]);
 		return invoice[0];
 	} catch (error) {
 		console.error('Database Error:', error);
